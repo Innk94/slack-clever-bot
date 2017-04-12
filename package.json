@@ -1,0 +1,29 @@
+{
+  "name": "hybrid_pepper_api",
+  "version": "1.0.0",
+  "description": "API communicating between Slack and Hybrid Pepper",
+  "main": "index.js",
+  "scripts": {
+    "test": "haha no"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Innk94/hybrid_pepper_api.git"
+  },
+  "keywords": [
+    "bot",
+    "api",
+    "slack",
+    "javascript",
+    "node"
+  ],
+  "author": "Pontus Johansson <pontusjohansson94@icloud.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Innk94/hybrid_pepper_api/issues"
+  },
+  "homepage": "https://github.com/Innk94/hybrid_pepper_api#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
