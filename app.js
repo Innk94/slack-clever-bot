@@ -1,35 +1,27 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var port = 3000;
+var express = require('express'),
+  slackBot = require('slackbots'),
+  bodyParser = require('body-parser'),
+  cBotbot = require('cleverbot-node');
 
-var Cleverbot = require('cleverbot-node');
-    cleverbot = new Cleverbot;
-    cleverbot.configure({botapi: "APIKEY"});
+var app = express(),
+  port = 3000,
+  cleverBot = new cBot;
+  cleverBot.configure({botapi: "APIKEY"});
 
-var Bot = require('slackbots');
-var settings = {
+var bot = new slackBot({
     token: 'APIKEY',
-    name: 'Hybrid Pepper'
-};
-var bot = new Bot(settings);
+    name: 'BOTNAME'
+});
 
-/*bot.on('start', function() {
-    var users = bot.getUsers();
-    var userCount = users._status - 1;
-    for(var i = 0; i <= userCount; i++){ <- gets members name
-        console.log(users._value.members[i].name);
-    }
-});*/
-
+//On message, return cleverbot API awnser
 bot.on('message', function(message) {
   var messages = [];
 
   if(message.type == 'message'
     && typeof message.deleted_ts == "undefined"
-    && message.username != "Hybrid Pepper"
+    && message.username != "BOTNAME"
   ){
-    cleverbot.write(message.text, function (response) {
+    cleverBot.write(message.text, function (response) {
       bot.postMessageToChannel('general', response.output);
     });
   }
@@ -37,6 +29,7 @@ bot.on('message', function(message) {
 
 app.use(bodyParser.json());
 
+//Default port 3000
 app.listen(port, function(){
   console.log("Listening to port:" + port);
 });
